@@ -7,6 +7,10 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: List files in the repository duuuuuuuude
-        run: echo ${{ secrets.TEST }}
-          echo ${{ secrets.TEST }}
+      
+      - name: Show Secret Value
+        id: show_secret
+        run: echo "::set-output name=secret_value::${{ secrets.TEST }}"
+      
+      - name: Display Secret Value
+        run: echo "Der Wert von TEST ist ${{ steps.show_secret.outputs.secret_value }}"
